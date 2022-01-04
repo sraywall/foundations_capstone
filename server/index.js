@@ -22,6 +22,7 @@ app.get('/css', (req,res)=>{
 app.get('/js', (req,res)=>{
     res.sendFile(path.join(__dirname,'../index.js'))
 })
+const port = process.env.PORT || 4005
 
 //Entries
-app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
+app.listen(port, () => console.log(`up on ${port}`))

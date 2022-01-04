@@ -47,7 +47,8 @@ module.exports = {
         console.log("searching string:",search_str)
         sequelize.query(`SELECT *
         FROM "tblEnglish2"
-        WHERE "Word" LIKE '${search_str}%';
+        WHERE "Word" LIKE '${search_str}%'
+        ORDER BY levenshtein("Word",'${search_str}');
         
         
         `)
@@ -61,7 +62,8 @@ module.exports = {
         // console.log("searching string:",search_str)
         let query_string = `SELECT *
         FROM "tblNavajo"
-        WHERE "Word" LIKE '${search_str}%' OR unaccent("Word") LIKE '${search_str}%';
+        WHERE "Word" LIKE '${search_str}%' OR unaccent("Word") LIKE '${search_str}%'
+        ORDER BY levenshtein("Word",'${search_str}');
         `;
         sequelize2.query(query_string)
         .then(dbRes=>{

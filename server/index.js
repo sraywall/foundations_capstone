@@ -2,7 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const {SERVER_PORT} = process.env
+const path = require('path')
+
+// const {SERVER_PORT} = process.env
 
 const {getEntries,getNavEntries,saveSearch,getSearches} = require('./controller.js')
 

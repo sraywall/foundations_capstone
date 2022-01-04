@@ -43,11 +43,12 @@ module.exports = {
         //     console.log("word: ",word,"def:",def)
         // }
         let search_str = req.params.search
-        search_str = search_str.replace("'","''")
+        search_str = search_str.replace("'","''").toLowerCase()
         console.log("searching string:",search_str)
         sequelize.query(`SELECT *
         FROM "tblEnglish2"
-        WHERE "Word" LIKE '${search_str}%';
+        WHERE LOWER("Word") LIKE '${search_str}%'
+        ORDER BY LEVENSHTEIN("Word",'${search_str}');
         
         
         `)
@@ -57,11 +58,12 @@ module.exports = {
     },
     getNavEntries : (req,res) =>{
         let search_str = req.params.search
-        search_str = search_str.replace("'","''")
+        search_str = search_str.replace("'","''").toLowerCase()
         // console.log("searching string:",search_str)
         let query_string = `SELECT *
         FROM "tblNavajo"
-        WHERE "Word" LIKE '${search_str}%' OR unaccent("Word") LIKE '${search_str}%';
+        WHERE "Word" LIKE '${search_str}%' OR unaccent(Lower("Word")) LIKE '${search_str}%'
+        ORDER BY LEVENSHTEIN("Word",'${search_str}');
         `;
         sequelize2.query(query_string)
         .then(dbRes=>{

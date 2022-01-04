@@ -1,0 +1,432 @@
+-- ----------------------------------------------------------
+-- MDB Tools - A library for reading MS Access database files
+-- Copyright (C) 2000-2011 Brian Bruns and others.
+-- Files in libmdb are licensed under LGPL and the utilities under
+-- the GPL, see COPYING.LIB and COPYING files respectively.
+-- Check out http://mdbtools.sourceforge.net
+-- ----------------------------------------------------------
+
+SET client_encoding = 'UTF-8';
+
+CREATE TABLE "CalculatorNumbers"
+ (
+	"ID"			SERIAL, 
+	"EnglishNumbers"			VARCHAR (100), 
+	"NavajoNumbers"			VARCHAR (100), 
+	"IntegerNumber"			VARCHAR (100), 
+	"IntegerNumberUpdate"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "CalculatorNumbers" ADD CONSTRAINT "CalculatorNumbers_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "CalculatorPlaceValue"
+ (
+	"ID"			SERIAL, 
+	"EnglishNumbers"			VARCHAR (100), 
+	"NavajoNumbers"			VARCHAR (100), 
+	"IntegerNumber"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "CalculatorPlaceValue" ADD CONSTRAINT "CalculatorPlaceValue_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "CalendarMonths"
+ (
+	"ID"			SERIAL, 
+	"Month"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "CalendarMonths" ADD CONSTRAINT "CalendarMonths_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "ClanTable"
+ (
+	"ID"			SERIAL, 
+	"Group"			VARCHAR (100), 
+	"Clan"			VARCHAR (100), 
+	"meaning"			VARCHAR (500)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "ClanTable" ADD CONSTRAINT "ClanTable_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "ClockTable"
+ (
+	"ID"			SERIAL, 
+	"TimeID"			VARCHAR (100), 
+	"NavajoMod"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "ClockTable" ADD CONSTRAINT "ClockTable_pkey" PRIMARY KEY ("ID");
+CREATE INDEX "ClockTable_TimeID_idx" ON "ClockTable" ("TimeID");
+
+CREATE TABLE "CoinText"
+ (
+	"ID"			SERIAL, 
+	"CoinText"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "CoinText" ADD CONSTRAINT "CoinText_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "FinalListofTables"
+ (
+	"ID"			SERIAL, 
+	"PAGE"			VARCHAR (100), 
+	"WORD"			VARCHAR (100), 
+	"NUMBER"			INTEGER, 
+	"EXTRA"			VARCHAR (100), 
+	"PAGE2"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "FinalListofTables_NUMBER_idx" ON "FinalListofTables" ("NUMBER");
+ALTER TABLE "FinalListofTables" ADD CONSTRAINT "FinalListofTables_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "FindDups"
+ (
+	"Word Field"			VARCHAR (200), 
+	"NumberOfDups"			INTEGER
+);
+
+-- CREATE INDEXES ...
+
+CREATE TABLE "NavajoOperands"
+ (
+	"ID"			SERIAL, 
+	"Operand"			VARCHAR (100)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "NavajoOperands" ADD CONSTRAINT "NavajoOperands_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "NumbersList"
+ (
+	"ID"			SERIAL, 
+	"Field1"			VARCHAR (510), 
+	"Field2"			VARCHAR (100), 
+	"Field3"			VARCHAR (510), 
+	"Field4"			VARCHAR (510)
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "NumbersList" ADD CONSTRAINT "NumbersList_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "ParadigmIdx"
+ (
+	"ID"			SERIAL, 
+	"Field1"			VARCHAR (100), 
+	"Field2"			TEXT
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "ParadigmIdx" ADD CONSTRAINT "ParadigmIdx_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "ParadigmTables"
+ (
+	"ID"			SERIAL, 
+	"Field1"			VARCHAR (100), 
+	"Field2"			TEXT, 
+	"Field3"			TEXT, 
+	"Field4"			TEXT, 
+	"Field5"			TEXT, 
+	"Field6"			TEXT, 
+	"Field7"			TEXT, 
+	"Field8"			TEXT, 
+	"Field9"			TEXT, 
+	"Field10"			TEXT, 
+	"Field11"			TEXT, 
+	"Field12"			TEXT, 
+	"Field13"			TEXT, 
+	"Field14"			TEXT, 
+	"Field15"			TEXT, 
+	"Field16"			TEXT, 
+	"Field17"			TEXT, 
+	"Field18"			TEXT, 
+	"Field19"			TEXT, 
+	"Field20"			TEXT, 
+	"Field21"			TEXT, 
+	"Field22"			TEXT, 
+	"Field23"			TEXT, 
+	"Field24"			TEXT, 
+	"Field25"			TEXT, 
+	"Field26"			TEXT
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "ParadigmTables" ADD CONSTRAINT "ParadigmTables_pkey" PRIMARY KEY ("Field1");
+
+CREATE TABLE "Table3"
+ (
+	"ID"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"ID2"			INTEGER, 
+	"tblIdx"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "Table3_ID_idx" ON "Table3" ("ID");
+CREATE INDEX "Table3_Id2_idx" ON "Table3" ("ID2");
+ALTER TABLE "Table3" ADD CONSTRAINT "Table3_pkey" PRIMARY KEY ("Word");
+
+CREATE TABLE "tblDuplicatesTemplate"
+ (
+	"ID"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"ID2"			INTEGER, 
+	"tblIdx"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblDuplicatesTemplate_ID_idx" ON "tblDuplicatesTemplate" ("ID");
+CREATE INDEX "tblDuplicatesTemplate_Id2_idx" ON "tblDuplicatesTemplate" ("ID2");
+ALTER TABLE "tblDuplicatesTemplate" ADD CONSTRAINT "tblDuplicatesTemplate_pkey" PRIMARY KEY ("Word");
+
+CREATE TABLE "tblEnglish"
+ (
+	"ID"			SERIAL, 
+	"Block"			TEXT, 
+	"pgNum"			INTEGER, 
+	"DefNum"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"ParaSimple"			VARCHAR (200), 
+	"VI"			BOOL NOT NULL, 
+	"VT"			BOOL NOT NULL, 
+	"Word2"			VARCHAR (100), 
+	"Word3"			VARCHAR (100), 
+	"Word4"			VARCHAR (100), 
+	"tblWord"			TEXT, 
+	"tblNumbo"			INTEGER, 
+	"tblNumboPg"			INTEGER, 
+	"Verbs"			VARCHAR (100), 
+	"tblIdx"			INTEGER, 
+	"ID2"			INTEGER, 
+	"ID3"			INTEGER, 
+	"ID4"			INTEGER, 
+	"ID5"			INTEGER, 
+	"ID6"			INTEGER, 
+	"ID7"			INTEGER, 
+	"ID8"			INTEGER, 
+	"ID9"			INTEGER, 
+	"ID10"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblEnglish_DefNum_idx" ON "tblEnglish" ("DefNum");
+CREATE INDEX "tblEnglish_ID_idx" ON "tblEnglish" ("ID");
+CREATE INDEX "tblEnglish_ID2_idx" ON "tblEnglish" ("ID2");
+CREATE INDEX "tblEnglish_ID4_idx" ON "tblEnglish" ("ID4");
+CREATE INDEX "tblEnglish_ID5_idx" ON "tblEnglish" ("ID5");
+CREATE INDEX "tblEnglish_ID6_idx" ON "tblEnglish" ("ID6");
+CREATE INDEX "tblEnglish_ID7_idx" ON "tblEnglish" ("ID7");
+CREATE INDEX "tblEnglish_ID8_idx" ON "tblEnglish" ("ID8");
+CREATE INDEX "tblEnglish_ID9_idx" ON "tblEnglish" ("ID9");
+CREATE INDEX "tblEnglish_pgNum_idx" ON "tblEnglish" ("pgNum");
+ALTER TABLE "tblEnglish" ADD CONSTRAINT "tblEnglish_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "tblEnglish2"
+ (
+	"ID"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"ID2"			INTEGER, 
+	"tblIdx"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblEnglish2_ID_idx" ON "tblEnglish2" ("ID");
+CREATE UNIQUE INDEX "tblEnglish2_Id2_idx" ON "tblEnglish2" ("ID2");
+ALTER TABLE "tblEnglish2" ADD CONSTRAINT "tblEnglish2_pkey" PRIMARY KEY ("Word");
+
+CREATE TABLE "tblNavajo"
+ (
+	"ID"			SERIAL, 
+	"PageNumber"			INTEGER, 
+	"DefNum"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"DefExtra"			TEXT, 
+	"ParaSimple"			VARCHAR (200), 
+	"CI"			VARCHAR (100), 
+	"F"			VARCHAR (100), 
+	"i"			VARCHAR (100), 
+	"NI"			VARCHAR (100), 
+	"NP"			VARCHAR (100), 
+	"O"			VARCHAR (100), 
+	"P"			VARCHAR (100), 
+	"R"			VARCHAR (100), 
+	"RI"			VARCHAR (100), 
+	"SP"			VARCHAR (100), 
+	"SPN"			VARCHAR (100), 
+	"Classifier"			VARCHAR (100), 
+	"U"			VARCHAR (100), 
+	"Prog"			VARCHAR (100), 
+	"DI"			VARCHAR (100), 
+	"Word2"			VARCHAR (100), 
+	"PN"			VARCHAR (100), 
+	"Word3"			VARCHAR (100), 
+	"Word4"			VARCHAR (100), 
+	"Block"			TEXT, 
+	"tblWord"			TEXT, 
+	"tblNumbo"			INTEGER, 
+	"tblNumboPg"			INTEGER, 
+	"superscript"			INTEGER, 
+	"variation"			INTEGER, 
+	"testPg"			INTEGER, 
+	"combinedpgs"			INTEGER, 
+	"tblIdx"			INTEGER, 
+	"ID2"			INTEGER, 
+	"ID3"			INTEGER, 
+	"ID4"			INTEGER, 
+	"ID5"			INTEGER, 
+	"ID6"			INTEGER, 
+	"ID7"			INTEGER, 
+	"ID8"			INTEGER, 
+	"ID9"			INTEGER, 
+	"ID10"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblNavajo_DefNum_idx" ON "tblNavajo" ("DefNum");
+CREATE INDEX "tblNavajo_ID_idx" ON "tblNavajo" ("ID");
+CREATE INDEX "tblNavajo_Id2_idx" ON "tblNavajo" ("ID2");
+CREATE INDEX "tblNavajo_ID4_idx" ON "tblNavajo" ("ID4");
+CREATE INDEX "tblNavajo_ID5_idx" ON "tblNavajo" ("ID5");
+CREATE INDEX "tblNavajo_ID6_idx" ON "tblNavajo" ("ID6");
+CREATE INDEX "tblNavajo_ID7_idx" ON "tblNavajo" ("ID7");
+CREATE INDEX "tblNavajo_ID8_idx" ON "tblNavajo" ("ID8");
+CREATE INDEX "tblNavajo_ID9_idx" ON "tblNavajo" ("ID9");
+ALTER TABLE "tblNavajo" ADD CONSTRAINT "tblNavajo_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "tblSortEngTemplate"
+ (
+	"ID"			SERIAL, 
+	"Block"			TEXT, 
+	"pgNum"			INTEGER, 
+	"DefNum"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"ParaSimple"			VARCHAR (200), 
+	"VI"			BOOL NOT NULL, 
+	"VT"			BOOL NOT NULL, 
+	"Word2"			VARCHAR (100), 
+	"Word3"			VARCHAR (100), 
+	"Word4"			VARCHAR (100), 
+	"tblWord"			TEXT, 
+	"tblNumbo"			INTEGER, 
+	"tblNumboPg"			INTEGER, 
+	"Verbs"			VARCHAR (100), 
+	"tblIdx"			INTEGER, 
+	"ID2"			INTEGER, 
+	"ID3"			INTEGER, 
+	"ID4"			INTEGER, 
+	"ID5"			INTEGER, 
+	"ID6"			INTEGER, 
+	"ID7"			INTEGER, 
+	"ID8"			INTEGER, 
+	"ID9"			INTEGER, 
+	"ID10"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblSortEngTemplate_DefNum_idx" ON "tblSortEngTemplate" ("DefNum");
+CREATE INDEX "tblSortEngTemplate_ID_idx" ON "tblSortEngTemplate" ("ID");
+CREATE INDEX "tblSortEngTemplate_ID2_idx" ON "tblSortEngTemplate" ("ID2");
+CREATE INDEX "tblSortEngTemplate_ID4_idx" ON "tblSortEngTemplate" ("ID4");
+CREATE INDEX "tblSortEngTemplate_ID5_idx" ON "tblSortEngTemplate" ("ID5");
+CREATE INDEX "tblSortEngTemplate_ID6_idx" ON "tblSortEngTemplate" ("ID6");
+CREATE INDEX "tblSortEngTemplate_ID7_idx" ON "tblSortEngTemplate" ("ID7");
+CREATE INDEX "tblSortEngTemplate_ID8_idx" ON "tblSortEngTemplate" ("ID8");
+CREATE INDEX "tblSortEngTemplate_ID9_idx" ON "tblSortEngTemplate" ("ID9");
+CREATE INDEX "tblSortEngTemplate_pgNum_idx" ON "tblSortEngTemplate" ("pgNum");
+ALTER TABLE "tblSortEngTemplate" ADD CONSTRAINT "tblSortEngTemplate_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "tblSortTemplate"
+ (
+	"ID"			SERIAL, 
+	"PageNumber"			INTEGER, 
+	"DefNum"			INTEGER, 
+	"Word"			VARCHAR (200), 
+	"Def"			TEXT, 
+	"DefExtra"			TEXT, 
+	"ParaSimple"			VARCHAR (200), 
+	"CI"			VARCHAR (100), 
+	"F"			VARCHAR (100), 
+	"i"			VARCHAR (100), 
+	"NI"			VARCHAR (100), 
+	"NP"			VARCHAR (100), 
+	"O"			VARCHAR (100), 
+	"P"			VARCHAR (100), 
+	"R"			VARCHAR (100), 
+	"RI"			VARCHAR (100), 
+	"SP"			VARCHAR (100), 
+	"SPN"			VARCHAR (100), 
+	"Classifier"			VARCHAR (100), 
+	"U"			VARCHAR (100), 
+	"Prog"			VARCHAR (100), 
+	"DI"			VARCHAR (100), 
+	"Word2"			VARCHAR (100), 
+	"PN"			VARCHAR (100), 
+	"Word3"			VARCHAR (100), 
+	"Word4"			VARCHAR (100), 
+	"Block"			TEXT, 
+	"tblWord"			TEXT, 
+	"tblNumbo"			INTEGER, 
+	"tblNumboPg"			INTEGER, 
+	"superscript"			INTEGER, 
+	"variation"			INTEGER, 
+	"testPg"			INTEGER, 
+	"combinedpgs"			INTEGER, 
+	"tblIdx"			INTEGER, 
+	"ID2"			INTEGER, 
+	"ID3"			INTEGER, 
+	"ID4"			INTEGER, 
+	"ID5"			INTEGER, 
+	"ID6"			INTEGER, 
+	"ID7"			INTEGER, 
+	"ID8"			INTEGER, 
+	"ID9"			INTEGER, 
+	"ID10"			INTEGER
+);
+
+-- CREATE INDEXES ...
+CREATE INDEX "tblSortTemplate_DefNum_idx" ON "tblSortTemplate" ("DefNum");
+CREATE INDEX "tblSortTemplate_ID_idx" ON "tblSortTemplate" ("ID");
+CREATE INDEX "tblSortTemplate_Id2_idx" ON "tblSortTemplate" ("ID2");
+CREATE INDEX "tblSortTemplate_ID4_idx" ON "tblSortTemplate" ("ID4");
+CREATE INDEX "tblSortTemplate_ID5_idx" ON "tblSortTemplate" ("ID5");
+CREATE INDEX "tblSortTemplate_ID6_idx" ON "tblSortTemplate" ("ID6");
+CREATE INDEX "tblSortTemplate_ID7_idx" ON "tblSortTemplate" ("ID7");
+CREATE INDEX "tblSortTemplate_ID8_idx" ON "tblSortTemplate" ("ID8");
+CREATE INDEX "tblSortTemplate_ID9_idx" ON "tblSortTemplate" ("ID9");
+ALTER TABLE "tblSortTemplate" ADD CONSTRAINT "tblSortTemplate_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "Vocabulary"
+ (
+	"ID"			SERIAL, 
+	"Word"			VARCHAR (400) NOT NULL, 
+	"Def"			TEXT
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "Vocabulary" ADD CONSTRAINT "Vocabulary_pkey" PRIMARY KEY ("ID");
+
+CREATE TABLE "VocabularyTemplate"
+ (
+	"ID"			SERIAL, 
+	"Word"			VARCHAR (400) NOT NULL, 
+	"Def"			TEXT
+);
+
+-- CREATE INDEXES ...
+ALTER TABLE "VocabularyTemplate" ADD CONSTRAINT "VocabularyTemplate_pkey" PRIMARY KEY ("ID");
+
+
+-- CREATE Relationships ...
+ALTER TABLE "MSysNavPaneGroups" ADD CONSTRAINT "MSysNavPaneGroups_GroupCategoryID_fk" FOREIGN KEY ("GroupCategoryID") REFERENCES "MSysNavPaneGroupCategories"("Id") ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE "MSysNavPaneGroupToObjects" ADD CONSTRAINT "MSysNavPaneGroupToObjects_GroupID_fk" FOREIGN KEY ("GroupID") REFERENCES "MSysNavPaneGroups"("Id") ON UPDATE CASCADE ON DELETE CASCADE;

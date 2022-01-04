@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navajo Dictionary</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css"/>
+</head>
+<body>
+    <div id="maindiv">
+        <h1>Navajo Dictionary</h1>
+        <label class="switch">
+            <input id="lang-toggle" type="checkbox">
+            <span class="slider round">
+                <span class="on">Navajo</span>
+                <span class="off">English</span>
+            </span>
+        </label>
+        <input type="search" id="searcher" placeholder="Enter an English word...">
+        <div class="dropdown">
+            <button class="dropbtn">Recent Searches</button>
+            <div id="myDropdown" class="dropdown-content">
+            </div>
+          </div>
+        <ul id=results></ul>
+ 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

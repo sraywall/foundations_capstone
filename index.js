@@ -26,7 +26,7 @@ searcher.addEventListener("keyup",(e)=>{
         let bodyObj = {
             Word:searcher.value
         }
-        axios.post(`http://localhost:8765/save`,bodyObj).then(({data:saves})=>{
+        axios.post(`/save`,bodyObj).then(({data:saves})=>{
             // ({data:saves}  = res)
             dropdown.innerHTML = ""
             for(let save of saves){
@@ -39,7 +39,7 @@ searcher.addEventListener("keyup",(e)=>{
         // console.log(`https://translate.ge/api/${searcher.value}`);
         let curr = searcher.value
         //`https://swapi.dev/api/people/?search=${curr}`
-        axios.get(`http://localhost:8765/${language}/${curr}`).then(res=>{
+        axios.get(`/${language}/${curr}`).then(res=>{
             // const {id:num,name} = res.data
             // if(num && name){
             //     console.log("name:",name,"number:",num)

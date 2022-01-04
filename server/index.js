@@ -4,8 +4,6 @@ const app = express()
 const cors = require('cors')
 const path = require('path')
 
-// const {SERVER_PORT} = process.env
-
 const {getEntries,getNavEntries,saveSearch,getSearches} = require('./controller.js')
 
 app.use(express.json())

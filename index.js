@@ -5,7 +5,6 @@ const dropbtn = document.querySelector(".dropbtn")
 const dropdown = document.querySelector("#myDropdown")
 let language = "eng"
 toggle.addEventListener('change',()=>{
-    // console.log("checked: ",toggle.checked)
     searcher.value = ""
     if(toggle.checked){
         searcher.placeholder="Enter a Navajo word..."
@@ -22,12 +21,10 @@ searcher.addEventListener("keyup",(e)=>{
         return
     }
     if(e.key === "Enter"){
-        console.log(`added ${searcher.value}!!`)
         let bodyObj = {
             Word:searcher.value
         }
         axios.post(`/save`,bodyObj).then(({data:saves})=>{
-            // ({data:saves}  = res)
             dropdown.innerHTML = ""
             for(let save of saves){
                 let link = document.createElement("a")
@@ -36,15 +33,8 @@ searcher.addEventListener("keyup",(e)=>{
             }
         })
     } else {
-        // console.log(`https://translate.ge/api/${searcher.value}`);
         let curr = searcher.value
-        //`https://swapi.dev/api/people/?search=${curr}`
         axios.get(`/${language}/${curr}`).then(res=>{
-            // const {id:num,name} = res.data
-            // if(num && name){
-            //     console.log("name:",name,"number:",num)
-            // }
-            // console.log(res)
             if(curr===searcher.value){
                 results.innerHTML="";
                 for(obj of res.data){

@@ -2,6 +2,11 @@ h1 {
     color: #3399ff;
     text-align: center;
 }
+main{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 #maindiv{
     display:flex;

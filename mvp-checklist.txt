@@ -1,0 +1,45 @@
+    project includes a wireframe for each view
+
+    project includes a list of MVP features *
+
+    project includes a data model
+
+    app has at least 3 main features *
+
+    front end makes a request to the server and handles the response *
+
+    front end is interactive *
+
+    app has custom styling *
+
+    app has at least 5 semantic tags *
+
+    app includes 1 view *
+
+    styling includes flexbox
+
+    at least 1 view is responsive
+
+    styling includes animations
+
+    app includes a GET endpoint and handler function *
+
+    app includes a POST endpoint and handler function *
+
+    app includes a PUT endpoint and handler function
+
+    app utilizes Sequelize
+
+    project includes at least 1 controller file
+
+    project includes a seed file or function
+
+    app uses 1 table
+
+    app uses 1+ additional tables
+
+    discusses project purpose and demonstrates MVP *
+
+    does not discuss broken/unimplemented features
+
+    recording is between 2-3 minutes
